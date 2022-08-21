@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+//@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$bg-color: #F8F8F8;
+
+.body {
+  background-color: $bg-color;
+}
