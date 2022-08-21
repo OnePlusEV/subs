@@ -15,13 +15,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // ng Zorro
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { HeaderComponent } from './components/header/header.component';
+import { TableComponent } from './components/table/table.component';
+import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NzTableModule} from "ng-zorro-antd/table";
+import {NzAvatarModule} from "ng-zorro-antd/avatar";
+import { LogoComponent } from './components/logo/logo.component';
+import {NzIconModule} from "ng-zorro-antd/icon";
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    TableComponent,
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,11 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDividerModule,
+    NzTableModule,
+    NzAvatarModule,
+    NzIconModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
