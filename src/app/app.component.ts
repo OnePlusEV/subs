@@ -10,7 +10,5 @@ export class AppComponent {
   title = 'subs';
 
   public headers = ['', 'services', 'price', 'next payment', 'categories', ''];
-  public data: Item[] = [
-    {id: 1, idx: 1, categories: [], currency: 'RUB', nextPayment: '1', price: 100, service: 'Yandex' }
-  ]
+  public data: Item[] = []
 }

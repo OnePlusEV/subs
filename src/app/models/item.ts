@@ -6,6 +6,7 @@ export interface Item {
   nextPayment?: any;
   idx: number;
   categories?: Array<string>;
+  completed?: boolean;
 }
 
 export class Item {
@@ -18,6 +19,7 @@ export class Item {
     public currency?: string,
     public nextPayment?: any,
     public categories?: Array<string>,
+    public completed?: boolean,
   ) {
   }
 

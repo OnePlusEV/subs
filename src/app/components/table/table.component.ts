@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../models/item";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-table',
@@ -8,33 +9,33 @@ import {Item} from "../../models/item";
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   @Input() headers: string[] = []
   @Input() data: Item[] = []
 
-  listOfData: any[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
+  constructor(private dataService: DataService) { }
+
+  public counter: number = 0;
+
+  ngOnInit(): void {
+    this.dataService.getData().subscribe(res => {
+      this.refreshTableData(res);
+      this.counter = 0;
+    })
+  }
+
+  refreshTableData(res: Array<Item>) {
+    if (res && res.length > 0) {
+      res.forEach(item => {
+        item.idx = this.counter;
+        // this.setFormatPayment(item);
+        this.counter++;
+      })
+      this.data = res;
     }
-  ];
+  }
+
+  deleteRow(item: Item) {
+    this.dataService.deleteRow(item.idx);
+  }
 
 }
