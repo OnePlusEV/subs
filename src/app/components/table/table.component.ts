@@ -23,6 +23,10 @@ export class TableComponent implements OnInit {
     })
   }
 
+  /**
+   * Метод обновляющийтаблицу
+   * @param res - данные таблицы
+   */
   refreshTableData(res: Array<Item>) {
     if (res && res.length > 0) {
       res.forEach(item => {
@@ -31,9 +35,15 @@ export class TableComponent implements OnInit {
         this.counter++;
       })
       this.data = res;
+    } else {
+      this.data = [];
     }
   }
 
+  /**
+   * Метод удаляющий подписку
+   * @param шеуь - подписка
+   */
   deleteRow(item: Item) {
     this.dataService.deleteRow(item.idx);
   }

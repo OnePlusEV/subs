@@ -11,21 +11,39 @@ export class DataService {
 
   private data$: BehaviorSubject<any> = new BehaviorSubject(null);
 
+  /**
+   * Метод возвращающий данные
+   */
   getData() {
     return this.data$.asObservable();
   }
 
+  /**
+   * Метод установки данных
+   * @param value - массив подписок
+   */
   setData(value: any) {
     this.data$.next(value);
   }
 
+  /**
+   * Метод удаляющий подписку
+   * @param index - порядковый номер подписки
+   */
   deleteRow(index: number) {
     let data = this.data$.value;
     data.splice(index, 1);
+    if (data.length == 0) {
+      data = null
+    }
     this.setData(data);
   }
 
 
+  /**
+   * Метод генерирующий уникальный
+   * идентификатор для подписки
+   */
   getUniqueId(): number {
     const dataArray = this.data$.value;
     const length = dataArray?.length;

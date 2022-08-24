@@ -36,6 +36,10 @@ export class LogoComponent implements OnInit {
     , '#ca9bf7'
   ]
 
+  /**
+   * Метод устанавливающий литеру в логотип
+   * @param item - оюъект подписки
+   */
   setDefaultLogo(item: any): string {
     const raw = item.service;
     if (raw && raw.length > 0) {

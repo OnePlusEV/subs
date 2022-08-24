@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Добавить подписку
+   */
   public add() {
     let rows: Item[] = [];
     this.dataService.getData().subscribe(res => {
@@ -36,7 +39,6 @@ export class HeaderComponent implements OnInit {
     }
     rows.push(tempRow);
     this.dataService.setData(rows);
-    console.log(rows);
   }
 
 }
