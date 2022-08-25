@@ -8,7 +8,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,6 +21,9 @@ import {NzTableModule} from "ng-zorro-antd/table";
 import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import { LogoComponent } from './components/logo/logo.component';
 import {NzIconModule} from "ng-zorro-antd/icon";
+import {NzDrawerModule} from "ng-zorro-antd/drawer";
+import {NzFormModule} from "ng-zorro-antd/form";
+import { AddDrawerComponent } from './components/add-drawer/add-drawer.component';
 
 registerLocaleData(en);
 
@@ -30,6 +33,7 @@ registerLocaleData(en);
     HeaderComponent,
     TableComponent,
     LogoComponent,
+    AddDrawerComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,10 @@ registerLocaleData(en);
     NzDividerModule,
     NzTableModule,
     NzAvatarModule,
-    NzIconModule
+    NzIconModule,
+    NzDrawerModule,
+    ReactiveFormsModule,
+    NzFormModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

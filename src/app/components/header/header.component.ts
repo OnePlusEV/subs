@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../../services/data.service";
 import {Item} from "../../models/item";
+import {FormControl, FormGroup} from "@angular/forms";
+import {DrawerService} from "../../services/drawer.service";
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,13 @@ import {Item} from "../../models/item";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( public dataService: DataService) { }
+  constructor( public dataService: DataService, private drawerService: DrawerService) { }
 
   ngOnInit(): void {
+  }
+
+  public openDrawer() {
+    this.drawerService.setState(true);
   }
 
   /**
