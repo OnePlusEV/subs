@@ -3,12 +3,33 @@
   [nzVisible]="visible"
   [nzWidth]="720"
   nzPlacement="right"
-  nzTitle="Basic Drawer"
+  nzTitle="Add subscription"
   (nzOnClose)="close()"
 >
   <ng-container *nzDrawerContent>
-    <p>Some contents...</p>
-    <p>Some contents...</p>
-    <p>Some contents...</p>
+    <form nz-form [formGroup]="form">
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4"> Service</nz-form-label>
+        <nz-form-control [nzSpan]="12" class="col-12">
+          <input type="text" nz-input formControlName="service" placeholder="Service"/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4"> Price</nz-form-label>
+        <nz-form-control [nzSpan]="12" class="col-12">
+          <input type="text" nz-input formControlName="price" placeholder="Price"/>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="4"> Next payment</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <nz-date-picker [nzFormat]="'dd.MM.YYYY'" class="w-100"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button nzType="dashed" nzShape="round" (click)="addNewSub()">+ Add</button>
+    </form>
   </ng-container>
 </nz-drawer>
