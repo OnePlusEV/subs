@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {Item} from "../models/item";
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +22,7 @@ export class DataService {
    * @param value - массив подписок
    */
   setData(value: any) {
-    const rawData = JSON.stringify(value);
-    localStorage.setItem('items', rawData);
+    this.setToCache(value);
     this.data$.next(value);
   }
 
@@ -56,5 +54,13 @@ export class DataService {
       return 0;
     }
     return 0;
+  }
+
+  /**
+   * Метод сохраняющий строки в кэш
+   */
+  setToCache(value: any) {
+    const rawData = JSON.stringify(value);
+    localStorage.setItem('items', rawData);
   }
 }

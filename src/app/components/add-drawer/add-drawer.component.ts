@@ -15,9 +15,13 @@ export class AddDrawerComponent implements OnInit {
 
   public visible = false;
   public categories = [
-    {label: 1, value: 1},
-    {label: 2, value: 2},
-    {label: 3, value: 3},
+    {label: 'Entertainments', value: 1},
+    {label: 'Finances', value: 2},
+    {label: 'Music', value: 3},
+    {label: 'Video Services', value: 4},
+    {label: 'Internet', value: 5},
+    {label: 'Phone', value: 6},
+    {label: 'Work', value: 7},
   ];
   public selectedValue = null;
 
@@ -27,13 +31,10 @@ export class AddDrawerComponent implements OnInit {
     this.service.getState().subscribe(res => {
       this.visible = res;
     })
-
-    this.form.get('service')?.valueChanges.subscribe(res => {
-      console.log(res);
-    })
   }
 
   close(): void {
+    this.form.reset();
     this.service.setState(false);
   }
 
@@ -41,6 +42,7 @@ export class AddDrawerComponent implements OnInit {
     service: new FormControl(''),
     price: new FormControl(''),
     nextPayment: new FormControl(''),
+    categories: new FormControl(''),
   });
 
   public addNewSub() {
@@ -56,7 +58,7 @@ export class AddDrawerComponent implements OnInit {
     })
     rows.push(rawData);
     this.dataService.setData(rows);
-    this.service.setState(false);
+    this.close();
 
   }
 
@@ -68,7 +70,7 @@ export class AddDrawerComponent implements OnInit {
       service: this.form.get('service')?.value,
       price: this.form.get('price')?.value,
       nextPayment: this.prependDate(this.form.get('nextPayment')?.value),
-      categories: this.selectedValue,
+      categories: this.form.get('categories')?.value,
     }
   }
 

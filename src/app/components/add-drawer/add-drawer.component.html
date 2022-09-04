@@ -31,7 +31,13 @@
                placeholder="Categories"
                [selectedValue]="selectedValue"
                [options]="categories"></app-input>
+    <hr>
 
-    <button nz-button nzType="dashed" nzShape="round" (click)="addNewSub()">+ Add</button>
+    <div class="col-12 d-flex justify-content-end">
+      <button nz-button
+              nzType="primary"
+              nzShape="round"
+              (click)="addNewSub()">+ Add</button>
+    </div>
   </ng-container>
 </nz-drawer>

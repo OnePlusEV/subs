@@ -14,25 +14,23 @@ export class TableComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
-  public counter: number = 0;
 
   ngOnInit(): void {
     this.dataService.getData().subscribe(res => {
       this.refreshTableData(res);
-      this.counter = 0;
     })
   }
 
   /**
-   * Метод обновляющийтаблицу
+   * Метод обновляющий таблицу
    * @param res - данные таблицы
    */
   refreshTableData(res: Array<Item>) {
+    let counter = 0;
     if (res && res.length > 0) {
       res.forEach(item => {
-        item.idx = this.counter;
-        // this.setFormatPayment(item);
-        this.counter++;
+        item.idx = counter;
+        counter++;
       })
       this.data = res;
     } else {
@@ -42,7 +40,7 @@ export class TableComponent implements OnInit {
 
   /**
    * Метод удаляющий подписку
-   * @param шеуь - подписка
+   * @param item - подписка
    */
   deleteRow(item: Item) {
     this.dataService.deleteRow(item.idx);

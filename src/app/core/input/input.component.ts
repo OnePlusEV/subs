@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-input',
@@ -7,11 +8,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
+  // Global props
   @Input() type: string = 'input';
-  @Input() control: any;
+  @Input() control: any = new FormControl();
   @Input() label: string = 'labelName';
   @Input() placeholder: string = 'placeholderName';
 
+  // Select props
   @Input() selectedValue: any = null;
   @Input() selectedType: string = 'default';
   @Input() options: any = [];
@@ -19,7 +22,6 @@ export class InputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
 }
