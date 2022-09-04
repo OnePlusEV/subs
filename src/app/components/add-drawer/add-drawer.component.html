@@ -29,7 +29,17 @@
           <nz-date-picker [nzFormat]="'dd.MM.YYYY'" class="w-100"></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
-      <button nz-button nzType="dashed" nzShape="round" (click)="addNewSub()">+ Add</button>
     </form>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="4"> Categories </nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <nz-select [(ngModel)]="selectedValue" nzSize="default" nzMode="multiple" nzPlaceHolder="Please select">
+          <nz-option *ngFor="let option of categories" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button nzType="dashed" nzShape="round" (click)="addNewSub()">+ Add</button>
   </ng-container>
 </nz-drawer>

@@ -5,7 +5,7 @@ export interface Item {
   idx: number;
   nextPayment: any;
   currency?: string;
-  categories?: Array<string>;
+  categories?: any;
   completed?: boolean;
 }
 
@@ -18,7 +18,7 @@ export class Item {
     public idx: number,
     public nextPayment: any,
     public currency?: string,
-    public categories?: Array<string>,
+    public categories?: any,
     public completed?: boolean,
   ) {
     this.idx = 1;

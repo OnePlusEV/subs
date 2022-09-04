@@ -26,6 +26,7 @@ import {NzFormModule} from "ng-zorro-antd/form";
 import { AddDrawerComponent } from './components/add-drawer/add-drawer.component';
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
+import {NzSelectModule} from "ng-zorro-antd/select";
 
 registerLocaleData(en);
 
@@ -52,7 +53,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NzFormModule,
     NzInputModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzSelectModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

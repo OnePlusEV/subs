@@ -12,6 +12,12 @@ import {DataService} from "../../services/data.service";
 export class AddDrawerComponent implements OnInit {
 
   public visible = false;
+  public categories = [
+    {label: 1, value: 1},
+    {label: 2, value: 2},
+    {label: 3, value: 3},
+  ];
+  public selectedValue = null;
 
   constructor(private service: DrawerService, private dataService: DataService) { }
 
@@ -59,7 +65,8 @@ export class AddDrawerComponent implements OnInit {
       currency: 'RUR',
       service: this.form.get('service')?.value,
       price: this.form.get('price')?.value,
-      nextPayment: this.form.get('nextPayment')?.value
+      nextPayment: this.form.get('nextPayment')?.value,
+      categories: this.selectedValue,
     }
   }
 
