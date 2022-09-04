@@ -23,6 +23,8 @@ export class DataService {
    * @param value - массив подписок
    */
   setData(value: any) {
+    const rawData = JSON.stringify(value);
+    localStorage.setItem('items', rawData);
     this.data$.next(value);
   }
 
