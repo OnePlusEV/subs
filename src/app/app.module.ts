@@ -28,6 +28,7 @@ import {NzInputModule} from "ng-zorro-antd/input";
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import { InputComponent } from './core/input/input.component';
+import {NzTagModule} from "ng-zorro-antd/tag";
 
 registerLocaleData(en);
 
@@ -56,7 +57,8 @@ registerLocaleData(en);
     NzFormModule,
     NzInputModule,
     NzDatePickerModule,
-    NzSelectModule
+    NzSelectModule,
+    NzTagModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

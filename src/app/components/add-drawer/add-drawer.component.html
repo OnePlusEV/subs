@@ -29,6 +29,7 @@
     <app-input label="Categories"
                type="select"
                placeholder="Categories"
+               [control]="form.get('categories')"
                [selectedValue]="selectedValue"
                [options]="categories"></app-input>
     <hr>

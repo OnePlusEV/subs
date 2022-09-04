@@ -4,6 +4,7 @@ import {DrawerService} from "../../services/drawer.service";
 import {Item} from "../../models/item";
 import {DataService} from "../../services/data.service";
 import * as moment from "moment";
+import {CATEGORIES} from "../../dicts/Categories";
 
 
 @Component({
@@ -14,15 +15,7 @@ import * as moment from "moment";
 export class AddDrawerComponent implements OnInit {
 
   public visible = false;
-  public categories = [
-    {label: 'Entertainments', value: 1},
-    {label: 'Finances', value: 2},
-    {label: 'Music', value: 3},
-    {label: 'Video Services', value: 4},
-    {label: 'Internet', value: 5},
-    {label: 'Phone', value: 6},
-    {label: 'Work', value: 7},
-  ];
+  public categories = CATEGORIES;
   public selectedValue = null;
 
   constructor(private service: DrawerService, private dataService: DataService) { }
