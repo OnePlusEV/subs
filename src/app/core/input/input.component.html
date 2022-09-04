@@ -1,0 +1,24 @@
+<nz-form-item>
+  <nz-form-label [nzSpan]="4"> {{ label }}</nz-form-label>
+  <nz-form-control [nzSpan]="12" class="col-12">
+    <input *ngIf="type === 'input'"
+           type="text"
+           nz-input
+           [formControl]="control"
+           [placeholder]="placeholder"/>
+
+    <nz-date-picker *ngIf="type === 'date'"
+                    [nzFormat]="'dd.MM.YYYY'"
+                    [formControl]="control"
+                    class="w-100"></nz-date-picker>
+
+    <nz-select *ngIf="type === 'select'"
+               nzSize="default"
+               nzMode="multiple"
+               [(ngModel)]="selectedValue"
+               [nzPlaceHolder]="placeholder">
+      <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+    </nz-select>
+
+  </nz-form-control>
+</nz-form-item>

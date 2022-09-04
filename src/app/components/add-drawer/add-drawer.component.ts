@@ -3,6 +3,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {DrawerService} from "../../services/drawer.service";
 import {Item} from "../../models/item";
 import {DataService} from "../../services/data.service";
+import * as moment from "moment";
+
 
 @Component({
   selector: 'app-add-drawer',
@@ -65,9 +67,17 @@ export class AddDrawerComponent implements OnInit {
       currency: 'RUR',
       service: this.form.get('service')?.value,
       price: this.form.get('price')?.value,
-      nextPayment: this.form.get('nextPayment')?.value,
+      nextPayment: this.prependDate(this.form.get('nextPayment')?.value),
       categories: this.selectedValue,
     }
+  }
+
+  private prependDate(value: string) {
+    if (value) {
+      const momentDate = moment(value);
+      return momentDate.format('DD-MM-YYYY');
+    }
+    return ''
   }
 
 }

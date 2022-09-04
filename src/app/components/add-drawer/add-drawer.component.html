@@ -9,36 +9,28 @@
   <ng-container *nzDrawerContent>
     <form nz-form [formGroup]="form">
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="4"> Service</nz-form-label>
-        <nz-form-control [nzSpan]="12" class="col-12">
-          <input type="text" nz-input formControlName="service" placeholder="Service"/>
-        </nz-form-control>
-      </nz-form-item>
+      <!-- Service -->
+      <app-input [control]="form.get('service')"
+                 label="Service"
+                 placeholder="Name of service"></app-input>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="4"> Price</nz-form-label>
-        <nz-form-control [nzSpan]="12" class="col-12">
-          <input type="text" nz-input formControlName="price" placeholder="Price"/>
-        </nz-form-control>
-      </nz-form-item>
+      <!-- Price -->
+      <app-input [control]="form.get('price')"
+                 label="Price"
+                 placeholder="Price"></app-input>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="4"> Next payment</nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-date-picker [nzFormat]="'dd.MM.YYYY'" formControlName="nextPayment" class="w-100"></nz-date-picker>
-        </nz-form-control>
-      </nz-form-item>
+      <!-- Date -->
+      <app-input [control]="form.get('nextPayment')"
+                 label="Next payment"
+                 type="date"></app-input>
     </form>
 
-    <nz-form-item>
-      <nz-form-label [nzSpan]="4"> Categories </nz-form-label>
-      <nz-form-control [nzSpan]="12">
-        <nz-select [(ngModel)]="selectedValue" nzSize="default" nzMode="multiple" nzPlaceHolder="Please select">
-          <nz-option *ngFor="let option of categories" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-        </nz-select>
-      </nz-form-control>
-    </nz-form-item>
+    <!-- Categories -->
+    <app-input label="Categories"
+               type="select"
+               placeholder="Categories"
+               [selectedValue]="selectedValue"
+               [options]="categories"></app-input>
 
     <button nz-button nzType="dashed" nzShape="round" (click)="addNewSub()">+ Add</button>
   </ng-container>

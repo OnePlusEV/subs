@@ -27,6 +27,7 @@ import { AddDrawerComponent } from './components/add-drawer/add-drawer.component
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzSelectModule} from "ng-zorro-antd/select";
+import { InputComponent } from './core/input/input.component';
 
 registerLocaleData(en);
 
@@ -37,6 +38,7 @@ registerLocaleData(en);
     TableComponent,
     LogoComponent,
     AddDrawerComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,
