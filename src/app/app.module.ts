@@ -33,6 +33,7 @@ import {NzTabsModule} from "ng-zorro-antd/tabs";
 import { TimelineComponent } from './components/timeline/timeline.component';
 import {NzTimelineModule} from "ng-zorro-antd/timeline";
 import {NzCardModule} from "ng-zorro-antd/card";
+import { AbstractViewComponent } from './components/abstract-view/abstract-view.component';
 
 registerLocaleData(en);
 
@@ -45,6 +46,7 @@ registerLocaleData(en);
     AddDrawerComponent,
     InputComponent,
     TimelineComponent,
+    AbstractViewComponent,
   ],
   imports: [
     BrowserModule,
