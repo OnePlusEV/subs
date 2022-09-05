@@ -1,10 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+
 import {DrawerService} from "../../services/drawer.service";
-import {Item} from "../../models/item";
 import {DataService} from "../../services/data.service";
-import * as moment from "moment";
+
+import {DrawerState} from "../../models/drawer-state";
 import {CATEGORIES} from "../../dicts/Categories";
+import {Item} from "../../models/item";
+
+import * as moment from "moment";
 
 
 @Component({
@@ -15,20 +19,31 @@ import {CATEGORIES} from "../../dicts/Categories";
 export class AddDrawerComponent implements OnInit {
 
   public visible = false;
+  public state = null;
   public categories = CATEGORIES;
   public selectedValue = null;
+  public id: any;
 
-  constructor(private service: DrawerService, private dataService: DataService) { }
+  constructor(private service: DrawerService,
+              private dataService: DataService) { }
 
   ngOnInit(): void {
     this.service.getState().subscribe(res => {
-      this.visible = res;
+      this.visible = res.state === DrawerState.create || res.state === DrawerState.edit;
+      this.state = res.state;
+      if (res.data) {
+        this.mapData(res.data);
+        this.id = res.data.id;
+      }
     })
   }
 
-  close(): void {
+  closeDrawer(): void {
     this.form.reset();
-    this.service.setState(false);
+    this.service.setState({
+      state: DrawerState.null,
+      data: null,
+    });
   }
 
   form = new FormGroup({
@@ -38,7 +53,7 @@ export class AddDrawerComponent implements OnInit {
     categories: new FormControl(''),
   });
 
-  public addNewSub() {
+  public addNewSub(id?: number) {
     const rawData = this.prependData();
 
     let rows: Item[] = [];
@@ -49,9 +64,16 @@ export class AddDrawerComponent implements OnInit {
         rows = [];
       }
     })
-    rows.push(rawData);
+    if ((id || id == 0) && rows.length) {
+      const index = rows.findIndex(item => {
+        return item.id === id;
+      })
+      rows[index] = rawData;
+    } else {
+      rows.push(rawData);
+    }
     this.dataService.setData(rows);
-    this.close();
+    this.closeDrawer();
 
   }
 
@@ -70,9 +92,21 @@ export class AddDrawerComponent implements OnInit {
   private prependDate(value: string) {
     if (value) {
       const momentDate = moment(value);
-      return momentDate.format('DD-MM-YYYY');
+      return momentDate.format('DD.MM.YYYY');
     }
-    return ''
+    return 'error'
+  }
+
+  public mapData(value: Item) {
+    console.log(value);
+    this.form.get('service')?.setValue(value.service);
+    this.form.get('price')?.setValue(value.price);
+
+    const date = moment(value.nextPayment, 'DD.MM.YYYY').toDate()
+    this.form.get('nextPayment')?.setValue(date);
+
+    const categories = value.categories;
+    this.form.get('categories')?.setValue(categories);
   }
 
 }

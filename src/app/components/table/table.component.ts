@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../models/item";
 import {DataService} from "../../services/data.service";
+import {DrawerService} from "../../services/drawer.service";
+import {DrawerState} from "../../models/drawer-state";
 
 @Component({
   selector: 'app-table',
@@ -12,7 +14,8 @@ export class TableComponent implements OnInit {
   @Input() headers: string[] = []
   @Input() data: Item[] = []
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private drawerService: DrawerService) { }
 
 
   ngOnInit(): void {
@@ -44,6 +47,13 @@ export class TableComponent implements OnInit {
    */
   deleteRow(item: Item) {
     this.dataService.deleteRow(item.idx);
+  }
+
+  editRow(item: Item) {
+    this.drawerService.setState({
+      state: DrawerState.edit,
+      data: item
+    });
   }
 
 }

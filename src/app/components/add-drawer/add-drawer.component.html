@@ -4,7 +4,7 @@
   [nzWidth]="720"
   nzPlacement="right"
   nzTitle="Add subscription"
-  (nzOnClose)="close()"
+  (nzOnClose)="closeDrawer()"
 >
   <ng-container *nzDrawerContent>
     <form nz-form [formGroup]="form">
@@ -35,10 +35,15 @@
     <hr>
 
     <div class="col-12 d-flex justify-content-end">
-      <button nz-button
+      <button *ngIf="state === 0" nz-button
               nzType="primary"
               nzShape="round"
               (click)="addNewSub()">+ Add</button>
+
+      <button *ngIf="state === 1" nz-button
+              nzType="primary"
+              nzShape="round"
+              (click)="addNewSub(id)">Edit</button>
     </div>
   </ng-container>
 </nz-drawer>
