@@ -2,7 +2,15 @@
   <div class="row mt-5">
     <div class="col-8 container bl-r">
       <app-header></app-header>
-      <app-table [headers]="headers" [data]="data"></app-table>
+      <nz-tabset>
+        <nz-tab nzTitle="Table">
+          <app-table [headers]="headers" [data]="data"></app-table>
+        </nz-tab>
+        <nz-tab nzTitle="Agenda">
+          <app-timeline [data]="data"></app-timeline>
+        </nz-tab>
+        <nz-tab nzTitle="Calendar">Content of Tab Pane 3</nz-tab>
+      </nz-tabset>
     </div>
     <div class="col-4">
       <div class="col-12">1</div>

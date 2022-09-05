@@ -1,0 +1,33 @@
+<div class="col-12 m-5">
+  <nz-timeline>
+    <nz-timeline-item nzColor="red" *ngFor="let item of data">
+      <nz-card style="width:90%;" [nzActions]="[actionEdit, actionDelete]">
+        <nz-card-meta
+          [nzTitle]="item.service"
+          [nzDescription]="description"
+          [nzAvatar]="avatarTemplate"
+        ></nz-card-meta>
+      </nz-card>
+      <ng-template #avatarTemplate>
+        <app-logo [item]="item"></app-logo>
+      </ng-template>
+      <ng-template #actionEdit>
+        <span nz-icon nzType="edit" (click)="editRow(item)"></span>
+      </ng-template>
+      <ng-template #actionDelete>
+        <nz-button nzDanger nz-icon nzType="delete" (click)="deleteRow(item)"></nz-button>
+      </ng-template>
+      <ng-template #description>
+        <div class="d-flex justify-content-between">
+          <div>
+            <div> {{item.nextPayment}} </div>
+            <div> {{item.price}} {{item.currency}} </div>
+          </div>
+          <div>
+            <nz-tag *ngFor="let tag of item.categories" [nzColor]="'magenta'"> {{tag.label}} </nz-tag>
+          </div>
+        </div>
+      </ng-template>
+    </nz-timeline-item>
+  </nz-timeline>
+</div>

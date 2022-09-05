@@ -29,6 +29,10 @@ import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import { InputComponent } from './core/input/input.component';
 import {NzTagModule} from "ng-zorro-antd/tag";
+import {NzTabsModule} from "ng-zorro-antd/tabs";
+import { TimelineComponent } from './components/timeline/timeline.component';
+import {NzTimelineModule} from "ng-zorro-antd/timeline";
+import {NzCardModule} from "ng-zorro-antd/card";
 
 registerLocaleData(en);
 
@@ -40,6 +44,7 @@ registerLocaleData(en);
     LogoComponent,
     AddDrawerComponent,
     InputComponent,
+    TimelineComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,10 @@ registerLocaleData(en);
     NzInputModule,
     NzDatePickerModule,
     NzSelectModule,
-    NzTagModule
+    NzTagModule,
+    NzTabsModule,
+    NzTimelineModule,
+    NzCardModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
