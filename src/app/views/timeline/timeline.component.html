@@ -1,6 +1,9 @@
 <div class="col-12 m-5">
   <nz-timeline>
     <nz-timeline-item nzColor="red" *ngFor="let item of data">
+      <ng-container *ngIf="divider(item)">
+        <h3 class="m-2">{{ getMonth(item) }}</h3>
+      </ng-container>
       <nz-card style="width:90%;" [nzActions]="[actionEdit, actionDelete]">
         <nz-card-meta
           [nzTitle]="item.service"

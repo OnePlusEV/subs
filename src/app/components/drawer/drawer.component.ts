@@ -15,6 +15,7 @@ import {CATEGORIES} from "../../dicts/Categories";
 
 // Third-party
 import * as moment from "moment";
+import {Category} from "../../models/category";
 
 
 @Component({
@@ -27,7 +28,7 @@ export class DrawerComponent implements OnInit {
   public state: EnumDrawerState = EnumDrawerState.null;
   public visible: boolean = false;
   public id: any;
-  public categories = CATEGORIES;
+  public categories: Category[] = CATEGORIES;
 
   public form = new FormGroup({
     service: new FormControl(''),
