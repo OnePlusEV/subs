@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from "../../services/data.service";
-import {Item} from "../../models/item";
+
+// Services
 import {DrawerService} from "../../services/drawer.service";
-import {DrawerState} from "../../models/drawer-state";
+
+// Interfaces
+import {EnumDrawerState} from "../../models/enum-drawer-state";
 
 @Component({
   selector: 'app-header',
@@ -11,15 +13,18 @@ import {DrawerState} from "../../models/drawer-state";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dataService: DataService, private drawerService: DrawerService) {
+  constructor(private drawerService: DrawerService) {
   }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Открыть drawer
+   */
   public openDrawer() {
     this.drawerService.setState({
-        state: DrawerState.create,
+        state: EnumDrawerState.create,
         data: null
       });
   }

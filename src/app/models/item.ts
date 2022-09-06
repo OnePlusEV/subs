@@ -1,11 +1,13 @@
+import {Category} from "./category";
+
 export interface Item {
   id: number;
   service: string;
   price: number;
   idx: number;
-  nextPayment: any;
+  nextPayment: string;
   currency?: string;
-  categories?: any;
+  categories?: Category[];
   completed?: boolean;
 }
 
@@ -16,9 +18,9 @@ export class Item {
     public service: string,
     public price: number,
     public idx: number,
-    public nextPayment: any,
+    public nextPayment: string,
     public currency?: string,
-    public categories?: any,
+    public categories?: Category[],
     public completed?: boolean,
   ) {
     this.idx = 1;

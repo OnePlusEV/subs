@@ -2,7 +2,7 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {DataService} from "../../services/data.service";
 import {DrawerService} from "../../services/drawer.service";
 import {Item} from "../../models/item";
-import {DrawerState} from "../../models/drawer-state";
+import {EnumDrawerState} from "../../models/enum-drawer-state";
 
 @Component({
   selector: 'app-abstract-view',
@@ -52,9 +52,13 @@ export class AbstractViewComponent implements OnInit {
     this.dataService.deleteRow(item.idx);
   }
 
+  /**
+   * Метод изменяющий данные подписки
+   * @param item - подписка
+   */
   editRow(item: Item) {
     this.drawerService.setState({
-      state: DrawerState.edit,
+      state: EnumDrawerState.edit,
       data: item
     });
   }

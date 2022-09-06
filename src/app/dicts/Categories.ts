@@ -1,4 +1,6 @@
-export const CATEGORIES = [
+import {Category} from "../models/category";
+
+export const CATEGORIES: Category[] = [
   {label: 'Entertainments', value: 1},
   {label: 'Finances', value: 2},
   {label: 'Music', value: 3},

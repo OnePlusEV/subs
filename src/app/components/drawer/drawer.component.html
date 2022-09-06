@@ -10,28 +10,27 @@
     <form nz-form [formGroup]="form">
 
       <!-- Service -->
-      <app-input [control]="form.get('service')"
+      <app-form-item [control]="form.get('service')"
                  label="Service"
-                 placeholder="Name of service"></app-input>
+                 placeholder="Name of service"></app-form-item>
 
       <!-- Price -->
-      <app-input [control]="form.get('price')"
+      <app-form-item [control]="form.get('price')"
                  label="Price"
-                 placeholder="Price"></app-input>
+                 placeholder="Price"></app-form-item>
 
       <!-- Date -->
-      <app-input [control]="form.get('nextPayment')"
+      <app-form-item [control]="form.get('nextPayment')"
                  label="Next payment"
-                 type="date"></app-input>
+                 type="date"></app-form-item>
     </form>
 
     <!-- Categories -->
-    <app-input label="Categories"
+    <app-form-item label="Categories"
                type="select"
                placeholder="Categories"
                [control]="form.get('categories')"
-               [selectedValue]="selectedValue"
-               [options]="categories"></app-input>
+               [options]="categories"></app-form-item>
     <hr>
 
     <div class="col-12 d-flex justify-content-end">

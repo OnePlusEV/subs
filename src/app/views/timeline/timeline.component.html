@@ -5,12 +5,8 @@
         <nz-card-meta
           [nzTitle]="item.service"
           [nzDescription]="description"
-          [nzAvatar]="avatarTemplate"
         ></nz-card-meta>
       </nz-card>
-      <ng-template #avatarTemplate>
-        <app-logo [item]="item"></app-logo>
-      </ng-template>
       <ng-template #actionEdit>
         <span nz-icon nzType="edit" (click)="editRow(item)"></span>
       </ng-template>

@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  selector: 'app-form-item',
+  templateUrl: './form-item.component.html',
+  styleUrls: ['./form-item.component.scss']
 })
-export class InputComponent implements OnInit {
+export class FormItemComponent implements OnInit {
 
   // Global props
   @Input() type: string = 'input';
@@ -15,7 +15,6 @@ export class InputComponent implements OnInit {
   @Input() placeholder: string = 'placeholderName';
 
   // Select props
-  @Input() selectedValue: any = null;
   @Input() selectedType: string = 'default';
   @Input() options: any = [];
 

@@ -23,11 +23,11 @@ import { LogoComponent } from './core/logo/logo.component';
 import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzDrawerModule} from "ng-zorro-antd/drawer";
 import {NzFormModule} from "ng-zorro-antd/form";
-import { DrawerComponent } from './components/drawer/add-drawer.component';
+import { DrawerComponent } from './components/drawer/drawer.component';
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzSelectModule} from "ng-zorro-antd/select";
-import { InputComponent } from './core/input/input.component';
+import { FormItemComponent } from './core/form-item/form-item.component';
 import {NzTagModule} from "ng-zorro-antd/tag";
 import {NzTabsModule} from "ng-zorro-antd/tabs";
 import { TimelineComponent } from './views/timeline/timeline.component';
@@ -44,7 +44,7 @@ registerLocaleData(en);
     TableComponent,
     LogoComponent,
     DrawerComponent,
-    InputComponent,
+    FormItemComponent,
     TimelineComponent,
     AbstractViewComponent,
   ],

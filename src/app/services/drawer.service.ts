@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
+
+// Interfaces
+import {EnumDrawerState} from "../models/enum-drawer-state";
 import {DrawerState} from "../models/drawer-state";
 
 @Injectable({
@@ -8,7 +11,7 @@ import {DrawerState} from "../models/drawer-state";
 export class DrawerService {
 
   private state$: BehaviorSubject<any> = new BehaviorSubject({
-    state: DrawerState.null,
+    state: EnumDrawerState.null,
     data: null
   });
 
@@ -18,7 +21,7 @@ export class DrawerService {
     return this.state$.asObservable();
   }
 
-  setState(value: any){
+  setState(value: DrawerState){
     this.state$.next(value);
   }
 }

@@ -2,7 +2,7 @@ import {Component, Injector, Input, OnInit} from '@angular/core';
 import {Item} from "../../models/item";
 import {DataService} from "../../services/data.service";
 import {DrawerService} from "../../services/drawer.service";
-import {DrawerState} from "../../models/drawer-state";
+import {EnumDrawerState} from "../../models/enum-drawer-state";
 import {AbstractViewComponent} from "../abstract-view/abstract-view.component";
 
 @Component({
@@ -12,7 +12,7 @@ import {AbstractViewComponent} from "../abstract-view/abstract-view.component";
 })
 export class TableComponent extends AbstractViewComponent {
 
-  @Input() headers: string[] = []
+  headers: string[] = ['', 'services', 'price', 'next payment', 'categories', '']
 
   constructor(protected injector: Injector) {
     super(injector)

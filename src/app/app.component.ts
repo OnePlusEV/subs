@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private dataService: DataService) {
   }
 
-  public headers = ['', 'services', 'price', 'next payment', 'categories', ''];
   public data: Item[] = []
 
   ngOnInit() {
