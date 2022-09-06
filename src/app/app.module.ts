@@ -15,25 +15,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // ng Zorro
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { HeaderComponent } from './components/header/header.component';
-import { TableComponent } from './components/table/table.component';
+import { TableComponent } from './views/table/table.component';
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzTableModule} from "ng-zorro-antd/table";
 import {NzAvatarModule} from "ng-zorro-antd/avatar";
-import { LogoComponent } from './components/logo/logo.component';
+import { LogoComponent } from './core/logo/logo.component';
 import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzDrawerModule} from "ng-zorro-antd/drawer";
 import {NzFormModule} from "ng-zorro-antd/form";
-import { AddDrawerComponent } from './components/add-drawer/add-drawer.component';
+import { DrawerComponent } from './components/drawer/add-drawer.component';
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import { InputComponent } from './core/input/input.component';
 import {NzTagModule} from "ng-zorro-antd/tag";
 import {NzTabsModule} from "ng-zorro-antd/tabs";
-import { TimelineComponent } from './components/timeline/timeline.component';
+import { TimelineComponent } from './views/timeline/timeline.component';
 import {NzTimelineModule} from "ng-zorro-antd/timeline";
 import {NzCardModule} from "ng-zorro-antd/card";
-import { AbstractViewComponent } from './components/abstract-view/abstract-view.component';
+import { AbstractViewComponent } from './views/abstract-view/abstract-view.component';
 
 registerLocaleData(en);
 
@@ -43,7 +43,7 @@ registerLocaleData(en);
     HeaderComponent,
     TableComponent,
     LogoComponent,
-    AddDrawerComponent,
+    DrawerComponent,
     InputComponent,
     TimelineComponent,
     AbstractViewComponent,

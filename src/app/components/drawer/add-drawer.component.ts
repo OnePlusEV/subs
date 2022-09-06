@@ -12,11 +12,11 @@ import * as moment from "moment";
 
 
 @Component({
-  selector: 'app-add-drawer',
-  templateUrl: './add-drawer.component.html',
-  styleUrls: ['./add-drawer.component.scss']
+  selector: 'app-drawer',
+  templateUrl: './drawer.component.html',
+  styleUrls: ['./drawer.component.scss']
 })
-export class AddDrawerComponent implements OnInit {
+export class DrawerComponent implements OnInit {
 
   public visible = false;
   public state = null;
