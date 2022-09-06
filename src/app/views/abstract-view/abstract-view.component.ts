@@ -4,6 +4,9 @@ import {DrawerService} from "../../services/drawer.service";
 import {Item} from "../../models/item";
 import {EnumDrawerState} from "../../models/enum-drawer-state";
 
+// Third-party
+import * as moment from "moment";
+
 @Component({
   selector: 'app-abstract-view',
   template: '',
@@ -38,7 +41,7 @@ export class AbstractViewComponent implements OnInit {
         item.idx = counter;
         counter++;
       })
-      this.data = res;
+      this.data = this.sortItems(res);
     } else {
       this.data = [];
     }
@@ -61,6 +64,14 @@ export class AbstractViewComponent implements OnInit {
       state: EnumDrawerState.edit,
       data: item
     });
+  }
+
+  sortItems(array: Item[]): Item[] {
+    return array.sort(function(a,b){
+      let dateA = moment(a.nextPayment, 'DD.MM.YYYY').toDate(), dateB = moment(b.nextPayment, 'DD.MM.YYYY').toDate();
+      return (dateA.getTime() - dateB.getTime());
+    })
+
   }
 
 }
