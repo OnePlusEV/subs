@@ -11,38 +11,38 @@
 
       <!-- Service -->
       <app-form-item [control]="form.get('service')"
-                 label="Service"
-                 placeholder="Name of service"></app-form-item>
+                     label="Service"
+                     placeholder="Name of service"></app-form-item>
 
       <!-- Price -->
       <app-form-item [control]="form.get('price')"
-                 label="Price"
-                 placeholder="Price"></app-form-item>
+                     label="Price"
+                     placeholder="Price"></app-form-item>
 
       <!-- Date -->
       <app-form-item [control]="form.get('nextPayment')"
-                 label="Next payment"
-                 type="date"></app-form-item>
+                     label="Next payment"
+                     type="date"></app-form-item>
     </form>
 
     <!-- Categories -->
     <app-form-item label="Categories"
-               type="select"
-               placeholder="Categories"
-               [control]="form.get('categories')"
-               [options]="categories"></app-form-item>
+                   type="select"
+                   placeholder="Categories"
+                   (newItemEvent)="changeCategory($event)"
+                   [options]="categories"></app-form-item>
     <hr>
 
     <div class="col-12 d-flex justify-content-end">
       <button *ngIf="state === 0" nz-button
               nzType="primary"
               nzShape="round"
-              (click)="addNewSub()">+ Add</button>
+              (click)="addNewSub()">+ Add </button>
 
       <button *ngIf="state === 1" nz-button
               nzType="primary"
               nzShape="round"
-              (click)="addNewSub(id)">Edit</button>
+              (click)="addNewSub(id)">Edit </button>
     </div>
   </ng-container>
 </nz-drawer>

@@ -131,15 +131,19 @@ export class DrawerComponent implements OnInit {
    * @param value - запись
    */
   public mapData(value: Item) {
-    console.log(value);
     this.form.get('service')?.setValue(value.service);
     this.form.get('price')?.setValue(value.price);
 
     const date = moment(value.nextPayment, 'DD.MM.YYYY').toDate()
     this.form.get('nextPayment')?.setValue(date);
+  }
 
-    const categories = value.categories;
-    this.form.get('categories')?.setValue(categories);
+  /**
+   * Метод изменяющий категрию
+   * @param value - массив категорий
+   */
+  public changeCategory(value: Category[]) {
+    this.form.get('categories')?.setValue(value);
   }
 
 }

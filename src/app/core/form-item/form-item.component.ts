@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from "@angular/forms";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-form-item',
@@ -16,11 +17,18 @@ export class FormItemComponent implements OnInit {
 
   // Select props
   @Input() selectedType: string = 'default';
-  @Input() options: any = [];
+  @Input() options: Category[] = [];
+  @Input() selected: any;
+  @Output() newItemEvent = new EventEmitter<any>();
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  public outputSelectedItems(value: any) {
+    this.newItemEvent.emit(value);
+  }
 }
