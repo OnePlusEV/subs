@@ -29,6 +29,7 @@
     <app-form-item label="Categories"
                    type="select"
                    placeholder="Categories"
+                   [selected]="selected"
                    (newItemEvent)="changeCategory($event)"
                    [options]="categories"></app-form-item>
     <hr>
@@ -37,6 +38,7 @@
       <button *ngIf="state === 0" nz-button
               nzType="primary"
               nzShape="round"
+              [disabled]="form.invalid"
               (click)="addNewSub()">+ Add </button>
 
       <button *ngIf="state === 1" nz-button

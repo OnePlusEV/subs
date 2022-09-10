@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 // Services
 import {DrawerService} from "../../services/drawer.service";
@@ -9,13 +9,13 @@ import {DataService} from "../../services/data.service";
 import {EnumDrawerState} from "../../models/enum-drawer-state";
 import {DrawerState} from "../../models/drawer-state";
 import {Item} from "../../models/item";
+import {Category} from "../../models/category";
 
 // Constants
 import {CATEGORIES} from "../../dicts/Categories";
 
 // Third-party
 import * as moment from "moment";
-import {Category} from "../../models/category";
 
 
 @Component({
@@ -29,11 +29,12 @@ export class DrawerComponent implements OnInit {
   public visible: boolean = false;
   public id: any;
   public categories: Category[] = CATEGORIES;
+  public selected: any = []
 
   public form = new FormGroup({
-    service: new FormControl(''),
-    price: new FormControl(''),
-    nextPayment: new FormControl(''),
+    service: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required, Validators.pattern('\\d{0,}')]),
+    nextPayment: new FormControl('', [Validators.required]),
     categories: new FormControl(''),
   });
 
@@ -136,6 +137,8 @@ export class DrawerComponent implements OnInit {
 
     const date = moment(value.nextPayment, 'DD.MM.YYYY').toDate()
     this.form.get('nextPayment')?.setValue(date);
+
+    this.selected = value.categories;
   }
 
   /**

@@ -17,9 +17,9 @@
                [(ngModel)]="selected"
                (ngModelChange)="outputSelectedItems(selected)"
                nzSize="default"
-    nzMode="multiple">
+               nzMode="tags">
 
-    <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option"></nz-option>
+      <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option"></nz-option>
     </nz-select>
 
   </nz-form-control>
