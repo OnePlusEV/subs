@@ -14,7 +14,7 @@
         <span nz-icon nzType="edit" (click)="editRow(item)"></span>
       </ng-template>
       <ng-template #actionDelete>
-        <nz-button nzDanger nz-icon nzType="delete" (click)="deleteRow(item)"></nz-button>
+        <nz-button nzDanger nz-icon nzType="delete" (click)="confirmModal(item)"></nz-button>
       </ng-template>
       <ng-template #description>
         <div class="d-flex justify-content-between">

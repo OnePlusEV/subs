@@ -6,6 +6,7 @@ import {EnumDrawerState} from "../../models/enum-drawer-state";
 
 // Third-party
 import * as moment from "moment";
+import {ModalService} from "../../services/modal.service";
 
 @Component({
   selector: 'app-abstract-view',
@@ -16,10 +17,12 @@ export class AbstractViewComponent implements OnInit {
 
   protected dataService: DataService;
   protected drawerService: DrawerService;
+  protected modalService: ModalService;
 
   constructor(protected injector: Injector) {
     this.dataService = this.injector.get(DataService);
     this.drawerService = this.injector.get(DrawerService);
+    this.modalService = this.injector.get(ModalService);
   }
 
   public data: any;
@@ -55,6 +58,10 @@ export class AbstractViewComponent implements OnInit {
     this.dataService.deleteRow(item.idx);
   }
 
+  confirmModal(item: Item) {
+    this.modalService.show(item);
+  }
+
   /**
    * Метод изменяющий данные подписки
    * @param item - подписка
@@ -71,7 +78,6 @@ export class AbstractViewComponent implements OnInit {
       let dateA = moment(a.nextPayment, 'DD.MM.YYYY').toDate(), dateB = moment(b.nextPayment, 'DD.MM.YYYY').toDate();
       return (dateA.getTime() - dateB.getTime());
     })
-
   }
 
 }
