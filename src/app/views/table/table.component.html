@@ -17,7 +17,7 @@
       <td> {{item.price}} {{item.currency}} </td>
       <td> {{item.nextPayment}} </td>
       <td>
-        <nz-tag *ngFor="let tag of item.categories" [nzColor]="'magenta'"> {{tag.label}} </nz-tag>
+       <app-tags [item]="item"></app-tags>
       </td>
       <td>
         <button nz-button nzType="dashed"  nzSize="default" nzShape="round"><i nz-icon nzType="edit" (click)="editRow(item)"></i></button>

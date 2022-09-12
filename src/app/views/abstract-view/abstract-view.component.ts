@@ -7,6 +7,8 @@ import {EnumDrawerState} from "../../models/enum-drawer-state";
 // Third-party
 import * as moment from "moment";
 import {ModalService} from "../../services/modal.service";
+import {CATEGORIES} from "../../dicts/Categories";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-abstract-view',
@@ -43,6 +45,7 @@ export class AbstractViewComponent implements OnInit {
       res.forEach(item => {
         item.idx = counter;
         counter++;
+        this.setTag(item);
       })
       this.data = this.sortItems(res);
     } else {
@@ -78,6 +81,18 @@ export class AbstractViewComponent implements OnInit {
       let dateA = moment(a.nextPayment, 'DD.MM.YYYY').toDate(), dateB = moment(b.nextPayment, 'DD.MM.YYYY').toDate();
       return (dateA.getTime() - dateB.getTime());
     })
+  }
+
+  setTag(item: any) {
+    item.fullCategories = [];
+    item.categories?.forEach((cat: any) => {
+      item.fullCategories?.push(this.resolveTag(cat));
+    })
+  }
+
+  resolveTag(id: any): Category {
+    console.log('resolver')
+    return  (CATEGORIES.find(item => item.value === id) || CATEGORIES[0])
   }
 
 }

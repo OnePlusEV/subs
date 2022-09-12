@@ -23,7 +23,7 @@
             <div> {{item.price}} {{item.currency}} </div>
           </div>
           <div>
-            <nz-tag *ngFor="let tag of item.categories" [nzColor]="'magenta'"> {{tag.label}} </nz-tag>
+            <app-tags [item]="item"></app-tags>
           </div>
         </div>
       </ng-template>
