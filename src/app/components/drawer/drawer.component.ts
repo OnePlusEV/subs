@@ -78,19 +78,10 @@ export class DrawerComponent implements OnInit {
    */
   public addNewSub(id?: number) {
     const rawData = this.prependData();
+    let rows: Item[] = this.getData();
 
-    let rows: Item[] = [];
-    this.dataService.getData().subscribe(res => {
-      if (res) {
-        rows = res;
-      } else {
-        rows = [];
-      }
-    })
     if ((id || id == 0) && rows.length) {
-      const index = rows.findIndex(item => {
-        return item.id === id;
-      })
+      const index = rows.findIndex(item => item.id === id)
       rows[index] = rawData;
     } else {
       rows.push(rawData);
@@ -149,4 +140,15 @@ export class DrawerComponent implements OnInit {
     this.form.get('categories')?.setValue(value);
   }
 
+  private getData(): Item[] {
+    let rows: any;
+    this.dataService.getData().subscribe(res => {
+      if (res) {
+        rows = res;
+      } else {
+        rows = [];
+      }
+    })
+    return rows;
+  }
 }

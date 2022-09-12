@@ -12,20 +12,3 @@ export interface Item {
   completed?: boolean;
 }
 
-export class Item {
-
-  constructor(
-    public id: number,
-    public service: string,
-    public price: number,
-    public idx: number,
-    public nextPayment: string,
-    public currency?: string,
-    public categories?: Category[],
-    public fullCategories?: Category[],
-    public completed?: boolean,
-  ) {
-    this.idx = 1;
-  }
-
-}
