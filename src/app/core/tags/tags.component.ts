@@ -8,6 +8,18 @@ import {Component, Input, OnInit} from '@angular/core';
 export class TagsComponent implements OnInit {
 
   @Input() item: any;
+  public colors = [
+    'magenta',
+    'red',
+    'volcano',
+    'orange',
+    'gold',
+    'lime',
+    'green',
+    'blue',
+    'geekblue',
+    'purple'
+  ]
 
   constructor() { }
 
