@@ -2,6 +2,9 @@ import {Injectable, Input} from '@angular/core';
 import {NzModalService} from "ng-zorro-antd/modal";
 import {DataService} from "./data.service";
 import {Item} from "../models/item";
+import {EnumNotificationType} from "../models/notification/enum-notification-type";
+import {Notification} from "../models/notification/notification";
+import {ToastService} from "./toast.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,8 @@ import {Item} from "../models/item";
 export class ModalService {
 
   constructor(private modal: NzModalService,
-              private dataService: DataService) {}
+              private dataService: DataService,
+              private toast: ToastService) {}
 
   @Input() item: any;
 
@@ -21,6 +25,12 @@ export class ModalService {
       nzOkDanger: true,
       nzOnOk: () => {
         this.deleteRow(item);
+        const notification: Notification = {
+          type: EnumNotificationType.success,
+          content: 'Item deleted successfully',
+          title: 'Success'
+        }
+        this.toast.createNotification(notification)
       },
       nzCancelText: 'Cancel',
       nzOnCancel: () => console.log('Cancel')

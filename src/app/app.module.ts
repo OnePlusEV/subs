@@ -35,7 +35,9 @@ import {NzTimelineModule} from "ng-zorro-antd/timeline";
 import {NzCardModule} from "ng-zorro-antd/card";
 import { AbstractViewComponent } from './views/abstract-view/abstract-view.component';
 import {NzModalModule} from "ng-zorro-antd/modal";
+import { NzNoAnimationModule } from "ng-zorro-antd/core/no-animation";
 import { TagsComponent } from './core/tags/tags.component';
+import {NzNotificationModule} from "ng-zorro-antd/notification";
 
 registerLocaleData(en);
 
@@ -72,7 +74,8 @@ registerLocaleData(en);
     NzTabsModule,
     NzTimelineModule,
     NzCardModule,
-    NzModalModule
+    NzModalModule,
+    NzNotificationModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

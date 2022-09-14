@@ -16,6 +16,8 @@ import {CATEGORIES} from "../../dicts/Categories";
 
 // Third-party
 import * as moment from "moment";
+import {ToastService} from "../../services/toast.service";
+import {EnumNotificationType} from "../../models/notification/enum-notification-type";
 
 
 @Component({
@@ -39,7 +41,8 @@ export class DrawerComponent implements OnInit {
   });
 
   constructor(private service: DrawerService,
-              private dataService: DataService) { }
+              private dataService: DataService,
+              private toast: ToastService) { }
 
   ngOnInit(): void {
     this.service.getState().subscribe(res => {
@@ -88,6 +91,12 @@ export class DrawerComponent implements OnInit {
     }
     this.dataService.setData(rows);
     this.closeDrawer();
+    const notification = {
+      type: EnumNotificationType.success,
+      content: id ? 'Item edited successfully' : 'Item added successfully',
+      title: 'Success'
+    }
+    this.toast.createNotification(notification)
 
   }
 
